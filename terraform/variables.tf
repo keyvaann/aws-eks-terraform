@@ -35,6 +35,8 @@ variable "eks_cluster_name" {
   type        = string
   description = "EKS cluster name"
 
+  default = "aws-eks-terraform"
+
   validation {
     condition     = length(var.eks_cluster_name) > 0
     error_message = "The cluster name cannot be empty."
@@ -51,7 +53,7 @@ variable "common_tags" {
   type        = map(string)
   description = "Common tags associated to resources created"
   default = {
-    Project     = "radar-base"
+    Project     = "aws-eks-terraform"
     Environment = "dev"
   }
 }
@@ -70,7 +72,7 @@ variable "eks_kubernetes_version" {
 variable "instance_types" {
   type        = list(any)
   description = "List of instance types used by EKS managed node groups"
-  default     = ["m5.large", "m5d.large", "m5a.large", "m5ad.large", "m4.large"]
+  default     = ["t3.large"]
 }
 
 variable "instance_capacity_type" {

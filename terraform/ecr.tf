@@ -28,8 +28,8 @@ resource "terraform_data" "ecr_image" {
   provisioner "local-exec" {
     working_dir = "../app/"
     command     = <<EOF
-            aws ecr get-login-password --region ${var.AWS_REGION} | sudo docker login --username AWS --password-stdin ${local.account_id}.dkr.ecr.${var.AWS_REGION}.amazonaws.com && sudo docker build -t ${aws_ecr_repository.repo.repository_url}:${local.ecr_image_tag} . && sudo docker push ${aws_ecr_repository.repo.repository_url}:${local.ecr_image_tag}
-        EOF
+      aws ecr get-login-password --region ${var.AWS_REGION} | sudo docker login --username AWS --password-stdin ${local.account_id}.dkr.ecr.${var.AWS_REGION}.amazonaws.com && sudo docker build -t ${aws_ecr_repository.repo.repository_url}:${local.ecr_image_tag} . && sudo docker push ${aws_ecr_repository.repo.repository_url}:${local.ecr_image_tag}
+    EOF
   }
 }
 
