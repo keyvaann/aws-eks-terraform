@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.6/.schema/devbox.schema.json",
+  "packages": [
+    "terraform-docs@latest",
+    "terraform@latest",
+    "helm@latest",
+    "kubectl@latest",
+    "chart-testing@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null"
+    ],
+    "scripts": {
+      "prepare": [
+        "echo Generate docs",
+        "terraform-docs markdown table $DEVBOX_PROJECT_ROOT/terraform",
+        "echo Fixing the formatting",
+        "cd $DEVBOX_PROJECT_ROOT/terraform && terraform fmt",
+        "echo Validating Terraform code",
+        "cd $DEVBOX_PROJECT_ROOT/terraform && terraform validate",
+        // "helmlint $DEVBOX_PROJECT_ROOT/charts/flask-app",
+        "ct lint --config $DEVBOX_PROJECT_ROOT/.github/ct-lint.yaml"
+      ]
+    }
+  }
+}
