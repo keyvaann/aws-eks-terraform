@@ -12,6 +12,10 @@ terraform {
       source  = "gavinbunney/kubectl"
       version = "~> 1.14.0"
     }
+    sops = {
+      source  = "carlpett/sops"
+      version = "~> 0.5"
+    }
   }
   required_version = ">= 1.7.0"
 }

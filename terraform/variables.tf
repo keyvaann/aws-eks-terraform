@@ -136,3 +136,21 @@ variable "defaut_storage_class" {
     error_message = "Invalid storage class. Allowed values are 'ebs-sc-gp2', 'ebs-sc-gp3', 'ebs-sc-io1' or 'ebs-sc-io2'."
   }
 }
+
+variable "flast_app_api_base_url" {
+  type        = string
+  description = "Value for api_base_url variable in Flast APP Helm Chart"
+  default     = "http://google.com"
+}
+
+variable "flast_app_log_level" {
+  type        = string
+  description = "Value for log_level variable in Flast APP Helm Chart"
+  default     = "INFO"
+}
+
+variable "flast_app_max_connections" {
+  type        = string
+  description = "Value for max_connections variable in Flast APP Helm Chart"
+  default     = "100"
+}

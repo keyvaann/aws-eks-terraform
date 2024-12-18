@@ -36,6 +36,23 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: API_BASE_URL
+              value: {{ .Values.api_base_url }}
+            - name: LOG_LEVEL
+              value: {{ .Values.log_level }}     
+            - name: MAX_CONNECTIONS
+              value: "{{ .Values.max_connections }}"
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "flask-app.secretName" . }}
+                  key: secret_key
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "flask-app.secretName" . }}
+                  key: db_password
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

@@ -1,4 +1,6 @@
-# terraform/helm-load-balancer-controller.tf
+data "sops_file" "flast_app_secrets" {
+  source_file = "../flask_app_secrets.enc.json"
+}
 
 resource "helm_release" "ingress_nginx" {
   name = "ingress-nginx"
@@ -49,6 +51,12 @@ resource "helm_release" "flask_app" {
         paths:
         - path: /
           pathType: ImplementationSpecific
+
+    api_base_url: ${var.flast_app_api_base_url}
+    log_level: ${var.flast_app_log_level}
+    max_connections: ${var.flast_app_max_connections}
+    secret_key: ${data.sops_file.flast_app_secrets.data["secret_key"]}
+    db_password: ${data.sops_file.flast_app_secrets.data["db_password"]}
     EOF
   ]
 }

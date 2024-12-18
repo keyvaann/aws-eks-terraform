@@ -6,6 +6,7 @@
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.0.0, < 6.0.0 |
 | <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | ~> 1.14.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~> 2.24.0 |
+| <a name="requirement_sops"></a> [sops](#requirement\_sops) | ~> 0.5 |
 
 ## Providers
 
@@ -15,6 +16,7 @@
 | <a name="provider_helm"></a> [helm](#provider\_helm) | 2.16.1 |
 | <a name="provider_kubectl"></a> [kubectl](#provider\_kubectl) | 1.14.0 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.24.0 |
+| <a name="provider_sops"></a> [sops](#provider\_sops) | 0.7.2 |
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
 ## Modules
@@ -57,6 +59,7 @@
 | [terraform_data.ecr_image](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_ecr_image.app_image](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecr_image) | data source |
+| [sops_file.flast_app_secrets](https://registry.terraform.io/providers/carlpett/sops/latest/docs/data-sources/file) | data source |
 
 ## Inputs
 
@@ -73,6 +76,9 @@
 | <a name="input_eks_cluster_name"></a> [eks\_cluster\_name](#input\_eks\_cluster\_name) | EKS cluster name | `string` | n/a | yes |
 | <a name="input_eks_kubernetes_version"></a> [eks\_kubernetes\_version](#input\_eks\_kubernetes\_version) | Amazon EKS Kubernetes version | `string` | `"1.31"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment name | `string` | `"dev"` | no |
+| <a name="input_flast_app_api_base_url"></a> [flast\_app\_api\_base\_url](#input\_flast\_app\_api\_base\_url) | Value for api\_base\_url variable in Flast APP Helm Chart | `string` | `"http://google.com"` | no |
+| <a name="input_flast_app_log_level"></a> [flast\_app\_log\_level](#input\_flast\_app\_log\_level) | Value for log\_level variable in Flast APP Helm Chart | `string` | `"INFO"` | no |
+| <a name="input_flast_app_max_connections"></a> [flast\_app\_max\_connections](#input\_flast\_app\_max\_connections) | Value for max\_connections variable in Flast APP Helm Chart | `string` | `"100"` | no |
 | <a name="input_instance_capacity_type"></a> [instance\_capacity\_type](#input\_instance\_capacity\_type) | Capacity type used by EKS managed node groups | `string` | `"ON_DEMAND"` | no |
 | <a name="input_instance_types"></a> [instance\_types](#input\_instance\_types) | List of instance types used by EKS managed node groups | `list(any)` | <pre>[<br/>  "m5.large",<br/>  "m5d.large",<br/>  "m5a.large",<br/>  "m5ad.large",<br/>  "m4.large"<br/>]</pre> | no |
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | VPC CIDR | `string` | `"10.0.0.0/16"` | no |

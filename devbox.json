@@ -5,16 +5,23 @@
     "terraform@latest",
     "helm@latest",
     "kubectl@latest",
-    "chart-testing@latest"
+    "chart-testing@latest",
+    "age@latest",
+    "sops@latest",
   ],
+  "env": {
+    "SOPS_AGE_KEY_FILE": "$DEVBOX_PROJECT_ROOT/age_key.txt"
+  },
   "shell": {
     "init_hook": [
-      "echo 'Welcome to devbox!' > /dev/null"
+      "echo 'Welcome to devbox!' > /dev/null",
+      "./bin/generate_secret.sh"
     ],
     "scripts": {
       "prepare": [
-        "echo Generate docs",
+        "echo Generate Terraform and Helm docs",
         "terraform-docs markdown table $DEVBOX_PROJECT_ROOT/terraform",
+        "helm-docs -s file --template-files=README.md.gotmpl",
         "echo Fixing the formatting",
         "cd $DEVBOX_PROJECT_ROOT/terraform && terraform fmt",
         "echo Validating Terraform code",
