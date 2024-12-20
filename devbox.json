@@ -25,6 +25,12 @@
         "cd $DEVBOX_PROJECT_ROOT/terraform && terraform apply",
         "cd $DEVBOX_PROJECT_ROOT/terraform && curl `terraform output --raw eip_public_dns`/config"
       ],
+      "output": [
+        "terraform output eip_public_dns"
+      ],
+      "role" : [
+        "terraform output assume_eks_admins_role"
+      ],
       "pre_commit": [
         "echo Generate Terraform and Helm docs",
         "terraform-docs markdown table $DEVBOX_PROJECT_ROOT/terraform",
