@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e 
+set -e
 cd $DEVBOX_PROJECT_ROOT
 
 if [ ! -f "age_key.txt" ]; then
@@ -11,7 +11,7 @@ public_key=`grep -oE 'age\S+' age_key.txt`
 sed -i "s/AGE_PUBLIC_KEY/$public_key/" .sops.yaml
 
 if [ ! -f "flask_app_secrets.enc.json" ]; then
-    echo 
+    echo
     read -s -p "Enter the Secret key for Flask APP: " secret_key
     echo
     read -s -p "Enter the DB password for Flask APP: " db_password

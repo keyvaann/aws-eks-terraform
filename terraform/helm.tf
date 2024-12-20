@@ -29,7 +29,7 @@ resource "helm_release" "ingress_nginx" {
       addHeaders:
         X-Frame-Options: Deny
         X-Xss-Protection: 1; mode=block
-        X-Content-Type-Options: nosniff        
+        X-Content-Type-Options: nosniff
     EOF
   ]
 }

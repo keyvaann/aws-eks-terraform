@@ -333,6 +333,70 @@
         }
       }
     },
+    "pre-commit@latest": {
+      "last_modified": "2024-12-08T11:15:23Z",
+      "resolved": "github:NixOS/nixpkgs/93dc9803a1ee435e590b02cde9589038d5cc3a4e#pre-commit",
+      "source": "devbox-search",
+      "version": "4.0.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/76cp10xmkj8v7d0zd5347rxy4swgxfdw-pre-commit-4.0.1",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/b28bb1qjn055vck4bkysjzs98kc77wqm-pre-commit-4.0.1-dist"
+            }
+          ],
+          "store_path": "/nix/store/76cp10xmkj8v7d0zd5347rxy4swgxfdw-pre-commit-4.0.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1xf43r0hah3519nj8zpsbp1n80zvylaw-pre-commit-4.0.1",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/67nk26ky6crl47cc1i09x1vi7qxx2ahz-pre-commit-4.0.1-dist"
+            }
+          ],
+          "store_path": "/nix/store/1xf43r0hah3519nj8zpsbp1n80zvylaw-pre-commit-4.0.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/d1nfwavbw2ppqqffrqvk8chxz1g2vwbg-pre-commit-4.0.1",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/72c6mh0bzgzr2b9dnwsv726xp0hhcc36-pre-commit-4.0.1-dist"
+            }
+          ],
+          "store_path": "/nix/store/d1nfwavbw2ppqqffrqvk8chxz1g2vwbg-pre-commit-4.0.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/brirgh23gii3z9f12bhz4rk04bi6x8fl-pre-commit-4.0.1",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/yy8n332gk4bv5kqkiwqkm5khcfl3mph8-pre-commit-4.0.1-dist"
+            }
+          ],
+          "store_path": "/nix/store/brirgh23gii3z9f12bhz4rk04bi6x8fl-pre-commit-4.0.1"
+        }
+      }
+    },
     "sops@latest": {
       "last_modified": "2024-12-08T11:15:23Z",
       "resolved": "github:NixOS/nixpkgs/93dc9803a1ee435e590b02cde9589038d5cc3a4e#sops",

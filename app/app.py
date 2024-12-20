@@ -19,7 +19,7 @@ def config():
     api_base_url = os.getenv("API_BASE_URL")
     log_level = os.getenv("LOG_LEVEL")
     max_connections = os.getenv("MAX_CONNECTIONS")
-    
+
     # Return the config information
     return jsonify({
         "message": "Config and secrets accessed",
