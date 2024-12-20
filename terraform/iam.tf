@@ -104,7 +104,8 @@ resource "aws_iam_group_membership" "eks_admins_group_membership" {
 }
 
 module "iam_user" {
-  source = "terraform-aws-modules/iam/aws//modules/iam-user"
+  source  = "terraform-aws-modules/iam/aws//modules/iam-user"
+  version = "5.48.0"
 
   name                          = "${var.eks_cluster_name}-ecr-readonly-user"
   create_iam_user_login_profile = false

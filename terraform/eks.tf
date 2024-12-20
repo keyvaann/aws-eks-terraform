@@ -95,7 +95,7 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    "${var.eks_cluster_name}" = {
+    var.eks_cluster_name = {
       desired_size = var.worker_node_size["desired"]
       min_size     = var.worker_node_size["min"]
       max_size     = var.worker_node_size["max"]

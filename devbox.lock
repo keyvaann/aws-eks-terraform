@@ -540,6 +540,54 @@
           "store_path": "/nix/store/x21avpm4l062w7dhk4ifcifb9bb09zrs-terraform-1.10.1"
         }
       }
+    },
+    "tflint@latest": {
+      "last_modified": "2024-11-28T07:51:56Z",
+      "resolved": "github:NixOS/nixpkgs/226216574ada4c3ecefcbbec41f39ce4655f78ef#tflint",
+      "source": "devbox-search",
+      "version": "0.54.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/sabnazxmprkn41jlmjm3rs7nq7lgpx65-tflint-0.54.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/sabnazxmprkn41jlmjm3rs7nq7lgpx65-tflint-0.54.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/r1ji0p28hi8saglv7xf0jddkxf7cr05n-tflint-0.54.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/r1ji0p28hi8saglv7xf0jddkxf7cr05n-tflint-0.54.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/5x6g32x9s5vmq392b2i6zivcxwl8zrk0-tflint-0.54.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/5x6g32x9s5vmq392b2i6zivcxwl8zrk0-tflint-0.54.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/13zx2ylp69b5zmfkg1vpprr3pypyhd3f-tflint-0.54.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/13zx2ylp69b5zmfkg1vpprr3pypyhd3f-tflint-0.54.0"
+        }
+      }
     }
   }
 }

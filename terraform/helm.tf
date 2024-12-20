@@ -38,6 +38,7 @@ resource "helm_release" "flask_app" {
   name = "flask-app"
 
   chart     = "../charts/flask-app"
+  version   = "0.1.4"
   namespace = "default"
 
   values = [

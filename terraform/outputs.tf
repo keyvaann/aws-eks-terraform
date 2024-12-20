@@ -12,5 +12,6 @@ output "assume_eks_admins_role" {
 }
 
 output "eip_public_dns" {
-  value = aws_eip.cluster_loadbalancer_eip.public_dns
+  description = "The URL to access the applications"
+  value       = aws_eip.cluster_loadbalancer_eip.public_dns
 }
