@@ -97,6 +97,70 @@
         }
       }
     },
+    "checkov@latest": {
+      "last_modified": "2024-12-08T19:40:50Z",
+      "resolved": "github:NixOS/nixpkgs/dd51f52372a20a93c219e8216fe528a648ffcbf4#checkov",
+      "source": "devbox-search",
+      "version": "3.2.332",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/4j69s5b8f1g3kyizj08ck9647r5lw55k-checkov-3.2.332",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/2gf1ga3a8h9ybdd5khmqgzpwpv767xpi-checkov-3.2.332-dist"
+            }
+          ],
+          "store_path": "/nix/store/4j69s5b8f1g3kyizj08ck9647r5lw55k-checkov-3.2.332"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/0pp4pzgji8h72n5qhagvn4ahciscdq15-checkov-3.2.332",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/7bj75m0i6vwmlal8ar20hz6bj6gy4sg1-checkov-3.2.332-dist"
+            }
+          ],
+          "store_path": "/nix/store/0pp4pzgji8h72n5qhagvn4ahciscdq15-checkov-3.2.332"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/pwylllcx9lknlsvpvi71bpd8m67xf297-checkov-3.2.332",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/66h46ja9vy65m4x0783zz4a2n8gi0a0a-checkov-3.2.332-dist"
+            }
+          ],
+          "store_path": "/nix/store/pwylllcx9lknlsvpvi71bpd8m67xf297-checkov-3.2.332"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/h582r0zqh6rhrxgfyrrb51lw7x5aq1zk-checkov-3.2.332",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/1w9s4nnlyds0a32ks2mf9lhsi57kz1bw-checkov-3.2.332-dist"
+            }
+          ],
+          "store_path": "/nix/store/h582r0zqh6rhrxgfyrrb51lw7x5aq1zk-checkov-3.2.332"
+        }
+      }
+    },
     "curl@latest": {
       "last_modified": "2024-12-08T11:15:23Z",
       "resolved": "github:NixOS/nixpkgs/93dc9803a1ee435e590b02cde9589038d5cc3a4e#curl",

@@ -1,21 +1,26 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
-    hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: mixed-line-ending
-    -   id: check-yaml
-        exclude: charts/flask-app/templates
-    -   id: check-added-large-files
-    -   id: check-executables-have-shebangs
-    -   id: check-shebang-scripts-are-executable
-    -   id: check-merge-conflict
-    -   id: no-commit-to-branch
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: mixed-line-ending
+  - id: check-yaml
+    exclude: charts/flask-app/templates
+  - id: check-added-large-files
+  - id: check-executables-have-shebangs
+  - id: check-shebang-scripts-are-executable
+  - id: check-merge-conflict
+  - id: no-commit-to-branch
 - repo: https://github.com/antonbabenko/pre-commit-terraform
   rev: v1.96.2
   hooks:
-    - id: terraform_fmt
-    - id: terraform_tflint
+  - id: terraform_fmt
+  - id: terraform_tflint
+#   - id: checkov
+  - id: terraform_checkov
+    args:
+    - --args=--quiet
+    - --args=--skip-check CKV_AWS_23,CKV_AWS_355,CKV_AWS_290 # Temporarly skip these checks

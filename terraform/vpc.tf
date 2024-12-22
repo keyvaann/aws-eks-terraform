@@ -1,6 +1,5 @@
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=573f574c922782bc658f05523d0c902a4792b0a8" # commit hash of version 5.17.0
 
   name = "${var.eks_cluster_name}-vpc"
   cidr = var.vpc_cidr
@@ -51,6 +50,8 @@ resource "aws_security_group_rule" "vpc_endpoint_egress" {
   from_port         = 0
   to_port           = 0
   cidr_blocks       = ["0.0.0.0/0"]
+
+  #checkov:skip=CKV_AWS_382:Applications should be able to connect to internet.
 }
 
 resource "aws_security_group_rule" "vpc_endpoint_self_ingress" {
