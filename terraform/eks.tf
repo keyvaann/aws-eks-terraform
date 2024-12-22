@@ -1,5 +1,5 @@
 module "vpc_cni_irsa" {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git?ref=e20e0b9a42084bbc885fd5abb18b8744810bd567" # commit hash of version 5.48.0
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-role-for-service-accounts-eks?ref=e20e0b9a42084bbc885fd5abb18b8744810bd567" # commit hash of version 5.48.0
 
   role_name             = "${var.eks_cluster_name}-vpc-cni-irsa"
   attach_vpc_cni_policy = true
@@ -16,7 +16,7 @@ module "vpc_cni_irsa" {
 }
 
 module "ebs_csi_irsa" {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git?ref=e20e0b9a42084bbc885fd5abb18b8744810bd567" # commit hash of version 5.48.0
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-role-for-service-accounts-eks?ref=e20e0b9a42084bbc885fd5abb18b8744810bd567" # commit hash of version 5.48.0
 
   role_name             = "${var.eks_cluster_name}-ebs-csi-irsa"
   attach_ebs_csi_policy = true
@@ -33,7 +33,7 @@ module "ebs_csi_irsa" {
 }
 
 module "eks" {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=a713f6f464eb579a39918f60f130a5fbb77a6b30" # commit hash of version 20.31.6
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=2cb1fac31b0fc2dd6a236b0c0678df75819c5a3b" # commit hash of version 19.21.0
 
   cluster_name    = var.eks_cluster_name
   cluster_version = local.eks_core_versions[var.eks_kubernetes_version].cluster_version
@@ -92,7 +92,7 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    var.eks_cluster_name = {
+    (var.eks_cluster_name) = {
       desired_size = var.worker_node_size["desired"]
       min_size     = var.worker_node_size["min"]
       max_size     = var.worker_node_size["max"]
