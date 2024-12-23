@@ -11,6 +11,7 @@
     "curl@latest",
     "pre-commit@latest",
     "tflint@latest",
+    "trivy@latest",
     "checkov@latest",
   ],
   "env": {

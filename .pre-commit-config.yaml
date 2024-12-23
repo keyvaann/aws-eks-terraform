@@ -20,7 +20,9 @@ repos:
   - id: terraform_fmt
   - id: terraform_validate
   - id: terraform_tflint
-#   - id: checkov
+  - id: terraform_trivy
+    args:
+      - --args=--severity CRITICAL
   - id: terraform_checkov
     args:
     - --args=--quiet

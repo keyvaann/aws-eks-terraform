@@ -32,6 +32,7 @@ module "ebs_csi_irsa" {
   tags = merge(tomap({ "Name" : "${var.eks_cluster_name}-ebs-csi-irsa" }), var.common_tags)
 }
 
+#trivy:ignore:AVD-AWS-0040 #trivy:ignore:AVD-AWS-0041 #trivy:ignore:AVD-AWS-0104 For ease of use EKS cluster should be open to Internet in this example and applications should be able to connect to internet.
 module "eks" {
   source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=2cb1fac31b0fc2dd6a236b0c0678df75819c5a3b" # commit hash of version 19.21.0
 
