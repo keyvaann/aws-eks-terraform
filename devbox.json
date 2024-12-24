@@ -3,7 +3,6 @@
   "packages": [
     "terraform-docs@latest",
     "terraform@latest",
-    "helm@latest",
     "kubectl@latest",
     "chart-testing@latest",
     "age@latest",
@@ -13,6 +12,7 @@
     "tflint@latest",
     "trivy@latest",
     "checkov@latest",
+    "kubernetes-helm@latest",
   ],
   "env": {
     "SOPS_AGE_KEY_FILE": "$DEVBOX_PROJECT_ROOT/age_key.txt",
@@ -35,17 +35,6 @@
       ],
       "role": [
         "terraform output assume_eks_admins_role",
-      ],
-      "pre_commit": [
-        "echo Generate Terraform and Helm docs",
-        "terraform-docs markdown table $DEVBOX_PROJECT_ROOT/terraform",
-        "helm-docs -s file --template-files=README.md.gotmpl",
-        "echo Fixing the formatting",
-        "cd $DEVBOX_PROJECT_ROOT/terraform && terraform fmt",
-        "echo Validating Terraform code",
-        "cd $DEVBOX_PROJECT_ROOT/terraform && terraform validate",
-        // "helm lint $DEVBOX_PROJECT_ROOT/charts/flask-app",
-        "ct lint --config $DEVBOX_PROJECT_ROOT/.github/ct-lint.yaml",
       ],
     },
   },

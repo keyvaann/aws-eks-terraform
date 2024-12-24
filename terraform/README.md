@@ -4,6 +4,7 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.7.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.0.0, < 6.0.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 2.16.1 |
 | <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | ~> 1.14.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~> 2.24.0 |
 | <a name="requirement_sops"></a> [sops](#requirement\_sops) | ~> 0.5 |
@@ -12,7 +13,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.81.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.82.2 |
 | <a name="provider_helm"></a> [helm](#provider\_helm) | 2.16.1 |
 | <a name="provider_kubectl"></a> [kubectl](#provider\_kubectl) | 1.14.0 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.24.0 |
@@ -23,14 +24,14 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_allow_assume_eks_admins_iam_policy"></a> [allow\_assume\_eks\_admins\_iam\_policy](#module\_allow\_assume\_eks\_admins\_iam\_policy) | terraform-aws-modules/iam/aws//modules/iam-policy | 5.48.0 |
-| <a name="module_allow_eks_access_iam_policy"></a> [allow\_eks\_access\_iam\_policy](#module\_allow\_eks\_access\_iam\_policy) | terraform-aws-modules/iam/aws//modules/iam-policy | 5.48.0 |
-| <a name="module_ebs_csi_irsa"></a> [ebs\_csi\_irsa](#module\_ebs\_csi\_irsa) | terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks | ~> 5.0 |
-| <a name="module_eks"></a> [eks](#module\_eks) | terraform-aws-modules/eks/aws | 19.13.1 |
-| <a name="module_eks_admins_iam_role"></a> [eks\_admins\_iam\_role](#module\_eks\_admins\_iam\_role) | terraform-aws-modules/iam/aws//modules/iam-assumable-role | 5.48.0 |
-| <a name="module_iam_user"></a> [iam\_user](#module\_iam\_user) | terraform-aws-modules/iam/aws//modules/iam-user | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | ~> 5.0 |
-| <a name="module_vpc_cni_irsa"></a> [vpc\_cni\_irsa](#module\_vpc\_cni\_irsa) | terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks | ~> 5.0 |
+| <a name="module_allow_assume_eks_admins_iam_policy"></a> [allow\_assume\_eks\_admins\_iam\_policy](#module\_allow\_assume\_eks\_admins\_iam\_policy) | git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-policy | e20e0b9a42084bbc885fd5abb18b8744810bd567 |
+| <a name="module_allow_eks_access_iam_policy"></a> [allow\_eks\_access\_iam\_policy](#module\_allow\_eks\_access\_iam\_policy) | git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-policy | e20e0b9a42084bbc885fd5abb18b8744810bd567 |
+| <a name="module_ebs_csi_irsa"></a> [ebs\_csi\_irsa](#module\_ebs\_csi\_irsa) | git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-role-for-service-accounts-eks | e20e0b9a42084bbc885fd5abb18b8744810bd567 |
+| <a name="module_eks"></a> [eks](#module\_eks) | git::https://github.com/terraform-aws-modules/terraform-aws-eks.git | 2cb1fac31b0fc2dd6a236b0c0678df75819c5a3b |
+| <a name="module_eks_admins_iam_role"></a> [eks\_admins\_iam\_role](#module\_eks\_admins\_iam\_role) | git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-assumable-role | e20e0b9a42084bbc885fd5abb18b8744810bd567 |
+| <a name="module_iam_user"></a> [iam\_user](#module\_iam\_user) | git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-user | e20e0b9a42084bbc885fd5abb18b8744810bd567 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git | 573f574c922782bc658f05523d0c902a4792b0a8 |
+| <a name="module_vpc_cni_irsa"></a> [vpc\_cni\_irsa](#module\_vpc\_cni\_irsa) | git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-role-for-service-accounts-eks | e20e0b9a42084bbc885fd5abb18b8744810bd567 |
 
 ## Resources
 
@@ -58,7 +59,6 @@
 | [kubernetes_annotations.unset_eks_default_gp2](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/annotations) | resource |
 | [terraform_data.ecr_image](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
-| [aws_ecr_image.app_image](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecr_image) | data source |
 | [sops_file.flast_app_secrets](https://registry.terraform.io/providers/carlpett/sops/latest/docs/data-sources/file) | data source |
 
 ## Inputs
@@ -70,17 +70,16 @@
 | <a name="input_AWS_REGION"></a> [AWS\_REGION](#input\_AWS\_REGION) | Target AWS region | `string` | `"eu-west-2"` | no |
 | <a name="input_AWS_SECRET_ACCESS_KEY"></a> [AWS\_SECRET\_ACCESS\_KEY](#input\_AWS\_SECRET\_ACCESS\_KEY) | AWS secret key associated with the access key | `string` | `""` | no |
 | <a name="input_AWS_SESSION_TOKEN"></a> [AWS\_SESSION\_TOKEN](#input\_AWS\_SESSION\_TOKEN) | Session token for temporary security credentials from AWS STS | `string` | `""` | no |
-| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Common tags associated to resources created | `map(string)` | <pre>{<br/>  "Environment": "dev",<br/>  "Project": "radar-base"<br/>}</pre> | no |
+| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Common tags associated to resources created | `map(string)` | <pre>{<br/>  "Environment": "dev",<br/>  "Project": "aws-eks-terraform"<br/>}</pre> | no |
 | <a name="input_defaut_storage_class"></a> [defaut\_storage\_class](#input\_defaut\_storage\_class) | Default storage class used for describing the EBS usage | `string` | `"ebs-sc-gp2"` | no |
 | <a name="input_eks_admins_group_users"></a> [eks\_admins\_group\_users](#input\_eks\_admins\_group\_users) | EKS admin IAM user group | `list(string)` | `[]` | no |
-| <a name="input_eks_cluster_name"></a> [eks\_cluster\_name](#input\_eks\_cluster\_name) | EKS cluster name | `string` | n/a | yes |
+| <a name="input_eks_cluster_name"></a> [eks\_cluster\_name](#input\_eks\_cluster\_name) | EKS cluster name | `string` | `"aws-eks-terraform"` | no |
 | <a name="input_eks_kubernetes_version"></a> [eks\_kubernetes\_version](#input\_eks\_kubernetes\_version) | Amazon EKS Kubernetes version | `string` | `"1.31"` | no |
-| <a name="input_environment"></a> [environment](#input\_environment) | Environment name | `string` | `"dev"` | no |
 | <a name="input_flast_app_api_base_url"></a> [flast\_app\_api\_base\_url](#input\_flast\_app\_api\_base\_url) | Value for api\_base\_url variable in Flast APP Helm Chart | `string` | `"http://google.com"` | no |
 | <a name="input_flast_app_log_level"></a> [flast\_app\_log\_level](#input\_flast\_app\_log\_level) | Value for log\_level variable in Flast APP Helm Chart | `string` | `"INFO"` | no |
 | <a name="input_flast_app_max_connections"></a> [flast\_app\_max\_connections](#input\_flast\_app\_max\_connections) | Value for max\_connections variable in Flast APP Helm Chart | `string` | `"100"` | no |
 | <a name="input_instance_capacity_type"></a> [instance\_capacity\_type](#input\_instance\_capacity\_type) | Capacity type used by EKS managed node groups | `string` | `"ON_DEMAND"` | no |
-| <a name="input_instance_types"></a> [instance\_types](#input\_instance\_types) | List of instance types used by EKS managed node groups | `list(any)` | <pre>[<br/>  "m5.large",<br/>  "m5d.large",<br/>  "m5a.large",<br/>  "m5ad.large",<br/>  "m4.large"<br/>]</pre> | no |
+| <a name="input_instance_types"></a> [instance\_types](#input\_instance\_types) | List of instance types used by EKS managed node groups | `list(any)` | <pre>[<br/>  "t3.large"<br/>]</pre> | no |
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | VPC CIDR | `string` | `"10.0.0.0/16"` | no |
 | <a name="input_vpc_private_subnet_cidr"></a> [vpc\_private\_subnet\_cidr](#input\_vpc\_private\_subnet\_cidr) | List of private subnet configurations | `list(any)` | <pre>[<br/>  "10.0.0.0/19",<br/>  "10.0.32.0/19",<br/>  "10.0.64.0/19"<br/>]</pre> | no |
 | <a name="input_vpc_public_subnet_cidr"></a> [vpc\_public\_subnet\_cidr](#input\_vpc\_public\_subnet\_cidr) | List of public subnet configurations | `list(any)` | <pre>[<br/>  "10.0.96.0/19",<br/>  "10.0.128.0/19",<br/>  "10.0.160.0/19"<br/>]</pre> | no |
@@ -91,10 +90,6 @@
 | Name | Description |
 |------|-------------|
 | <a name="output_assume_eks_admins_role"></a> [assume\_eks\_admins\_role](#output\_assume\_eks\_admins\_role) | EKS admin role ARN |
-| <a name="output_eip_allocation_id"></a> [eip\_allocation\_id](#output\_eip\_allocation\_id) | n/a |
-| <a name="output_eip_public_dns"></a> [eip\_public\_dns](#output\_eip\_public\_dns) | n/a |
-| <a name="output_eks_cluser_endpoint"></a> [eks\_cluser\_endpoint](#output\_eks\_cluser\_endpoint) | n/a |
+| <a name="output_eip_public_dns"></a> [eip\_public\_dns](#output\_eip\_public\_dns) | The URL to access the applications |
 | <a name="output_eks_cluser_kms_key_arn"></a> [eks\_cluser\_kms\_key\_arn](#output\_eks\_cluser\_kms\_key\_arn) | n/a |
 | <a name="output_eks_cluster_name"></a> [eks\_cluster\_name](#output\_eks\_cluster\_name) | n/a |
-| <a name="output_eks_worker_node_group_name"></a> [eks\_worker\_node\_group\_name](#output\_eks\_worker\_node\_group\_name) | n/a |
-| <a name="output_vpc_public_subnets"></a> [vpc\_public\_subnets](#output\_vpc\_public\_subnets) | n/a |
