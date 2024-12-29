@@ -1,6 +1,19 @@
 # Terraform AWS EKS Infrastructure Setup
 This repository contains the infrastructure code to containerize a Python application, create an AWS EKS cluster, and deploy the application to the cluster using a Helm chart. The goal is to enable the setup with minimal input and intervention from the user.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Prerequisite](#prerequisite)
+- [Deployment steps](#deployment-steps)
+- [Next steps](#next-steps)
+- [To do](#to-do)
+- [Known issues](#known-issues)
+- [Design](#design)
+  - [Challenges and trade offs](#challenges-and-trade-offs)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Prerequisite
 Before running the Terraform scripts, ensure you have the following:
 - **AWS Credentials**: A valid AWS access key and secret key. These can be provided via environment variables, .tfvars files, or an AWS CLI profile. The AWS account must have sufficient permissions to create all required resources.
