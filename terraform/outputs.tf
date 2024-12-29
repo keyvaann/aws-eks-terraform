@@ -2,7 +2,7 @@ output "eks_cluster_name" {
   value = module.eks.cluster_name
 }
 
-output "eks_cluser_kms_key_arn" {
+output "eks_cluster_kms_key_arn" {
   value = module.eks.kms_key_arn
 }
 

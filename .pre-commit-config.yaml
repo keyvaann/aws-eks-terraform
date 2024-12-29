@@ -1,6 +1,10 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
+- repo: https://github.com/crate-ci/typos
+  rev: v1.28.4
+  hooks:
+  - id: typos
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v5.0.0
   hooks:
@@ -28,7 +32,7 @@ repos:
   - id: terraform_checkov
     args:
     - --args=--quiet
-    - --args=--skip-check CKV_AWS_23,CKV_AWS_355,CKV_AWS_290 --skip-framework helm # Temporarly skip these checks, Helm chart testing isn't needed for the repo
+    - --args=--skip-check CKV_AWS_23,CKV_AWS_355,CKV_AWS_290 --skip-framework helm # Temporarily skip these checks, Helm chart testing isn't needed for the repo
 - repo: https://github.com/rhysd/actionlint
   rev: v1.7.5
   hooks:

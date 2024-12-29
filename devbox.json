@@ -14,6 +14,7 @@
     "checkov@latest",
     "kubernetes-helm@latest",
     "actionlint@latest",
+    "typos@latest",
   ],
   "env": {
     "SOPS_AGE_KEY_FILE": "$DEVBOX_PROJECT_ROOT/age_key.txt",

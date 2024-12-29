@@ -768,6 +768,54 @@
           "store_path": "/nix/store/1yk8qv2bp70id52yp220gyy0bv1fp93r-trivy-0.58.0"
         }
       }
+    },
+    "typos@latest": {
+      "last_modified": "2024-12-09T13:13:08Z",
+      "resolved": "github:NixOS/nixpkgs/bc27f0fde01ce4e1bfec1ab122d72b7380278e68#typos",
+      "source": "devbox-search",
+      "version": "1.28.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6i47aknw7v8h1q7anc4b6ncghjdbl40k-typos-1.28.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/6i47aknw7v8h1q7anc4b6ncghjdbl40k-typos-1.28.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/hmqvcz803dfax1spq8jwxpdqh8g1wh6m-typos-1.28.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/hmqvcz803dfax1spq8jwxpdqh8g1wh6m-typos-1.28.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/m2a36mqvxxbzipfp3c5xrn0haalpvsvq-typos-1.28.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/m2a36mqvxxbzipfp3c5xrn0haalpvsvq-typos-1.28.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wxa1gv4s8207lwyqz6nzgcpfb65xldcq-typos-1.28.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wxa1gv4s8207lwyqz6nzgcpfb65xldcq-typos-1.28.2"
+        }
+      }
     }
   }
 }
