@@ -6,11 +6,13 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions: read-all
+
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install devbox
         uses: jetify-com/devbox-install-action@v0.11.0
