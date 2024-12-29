@@ -209,6 +209,70 @@
         }
       }
     },
+    "codespell@latest": {
+      "last_modified": "2024-12-03T12:40:06Z",
+      "resolved": "github:NixOS/nixpkgs/566e53c2ad750c84f6d31f9ccb9d00f823165550#codespell",
+      "source": "devbox-search",
+      "version": "2.3.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lj4pprbj79nggxdqbg68cxch0cl9msbh-codespell-2.3.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/b4jbf757khn54vslbdbd1537rzia7k8c-codespell-2.3.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/lj4pprbj79nggxdqbg68cxch0cl9msbh-codespell-2.3.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/2q7lk6n5sv729sdx35xwfpxq2a5a60sg-codespell-2.3.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/kazjv5pcswqgdkb46fwh6bg0xhxnf0i7-codespell-2.3.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/2q7lk6n5sv729sdx35xwfpxq2a5a60sg-codespell-2.3.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/12p6wwr9s0jaf0wgy8crrp8fmlby4gqk-codespell-2.3.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/q1hmmh34hnsvq2gq28xz48fxkkl4r6av-codespell-2.3.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/12p6wwr9s0jaf0wgy8crrp8fmlby4gqk-codespell-2.3.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6x4a5amzilxbh2lcms3caafs7j1yb1ic-codespell-2.3.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/dcc4kx9813y401mndkjnv4zgw0h0x7ra-codespell-2.3.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/6x4a5amzilxbh2lcms3caafs7j1yb1ic-codespell-2.3.0"
+        }
+      }
+    },
     "curl@latest": {
       "last_modified": "2024-12-08T11:15:23Z",
       "resolved": "github:NixOS/nixpkgs/93dc9803a1ee435e590b02cde9589038d5cc3a4e#curl",

@@ -19,7 +19,7 @@ Before running the Terraform scripts, ensure you have the following:
 5. **Check results**: If everything is installed successfully, you should be to see output of the `/config` route in your terminal. You can also run `devbox output` to get the URL that you can access the app on your browser.
 
 ## Next steps
-- Create an AWS profile for the role that is crated. You can find the role by running `devbox role`,
+- Create an AWS profile for the role that is created. You can find the role by running `devbox role`,
 - Commit `.sops.yaml` and `flask_app_secrets.enc.json` files to git.
 
 ## To do
