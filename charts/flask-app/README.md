@@ -4,6 +4,12 @@
 
 A Helm chart for Kubernetes
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| Keyvan |  | <https://github.com/keyvaann> |
+
 ## Values
 
 | Key | Type | Default | Description |
