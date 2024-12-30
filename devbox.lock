@@ -445,6 +445,54 @@
         }
       }
     },
+    "helm-docs@latest": {
+      "last_modified": "2024-12-03T12:40:06Z",
+      "resolved": "github:NixOS/nixpkgs/566e53c2ad750c84f6d31f9ccb9d00f823165550#helm-docs",
+      "source": "devbox-search",
+      "version": "1.14.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/m2msynf3dxyda9nncagy0nv9j25wxbrq-helm-docs-1.14.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/m2msynf3dxyda9nncagy0nv9j25wxbrq-helm-docs-1.14.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3kp9bbzkfcw95gli8c6jxzijabyg84vx-helm-docs-1.14.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3kp9bbzkfcw95gli8c6jxzijabyg84vx-helm-docs-1.14.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/49kk25lg7ch6w4ic1i1mcqnm4mp40i9g-helm-docs-1.14.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/49kk25lg7ch6w4ic1i1mcqnm4mp40i9g-helm-docs-1.14.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/8mxkx8hrsapvxbmr2jci7g68lv737qln-helm-docs-1.14.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/8mxkx8hrsapvxbmr2jci7g68lv737qln-helm-docs-1.14.2"
+        }
+      }
+    },
     "kubectl@latest": {
       "last_modified": "2024-11-28T07:51:56Z",
       "resolved": "github:NixOS/nixpkgs/226216574ada4c3ecefcbbec41f39ce4655f78ef#kubectl",
