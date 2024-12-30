@@ -273,6 +273,70 @@
         }
       }
     },
+    "commitizen@latest": {
+      "last_modified": "2024-12-23T21:10:33Z",
+      "resolved": "github:NixOS/nixpkgs/de1864217bfa9b5845f465e771e0ecb48b30e02d#commitizen",
+      "source": "devbox-search",
+      "version": "4.0.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/h3dn3xjx5fadkljv83xh3h4ywvkkvxdp-python3.12-commitizen-4.0.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/jfmhaxgksa7ldn33m2vpmy43k9l78wy1-python3.12-commitizen-4.0.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/h3dn3xjx5fadkljv83xh3h4ywvkkvxdp-python3.12-commitizen-4.0.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1g8kr00jh61z6a3bw54zrifcsqkvpmfl-python3.12-commitizen-4.0.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/rxb90w1z9k62jpni6dhy725638a7rwd5-python3.12-commitizen-4.0.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/1g8kr00jh61z6a3bw54zrifcsqkvpmfl-python3.12-commitizen-4.0.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/h7f3fnr00al7igxx1mxzsam16yjhn1qh-python3.12-commitizen-4.0.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/y4ic1qzhvcdx11j2g8s985bm6gx6gvjy-python3.12-commitizen-4.0.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/h7f3fnr00al7igxx1mxzsam16yjhn1qh-python3.12-commitizen-4.0.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mivpxprxgjhfm44h013addxfzxq4bwf3-python3.12-commitizen-4.0.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/1xhffkk03ddps3f6lgpy4w9flpmbaxa9-python3.12-commitizen-4.0.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/mivpxprxgjhfm44h013addxfzxq4bwf3-python3.12-commitizen-4.0.0"
+        }
+      }
+    },
     "curl@latest": {
       "last_modified": "2024-12-08T11:15:23Z",
       "resolved": "github:NixOS/nixpkgs/93dc9803a1ee435e590b02cde9589038d5cc3a4e#curl",

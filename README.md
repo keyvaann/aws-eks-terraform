@@ -11,6 +11,7 @@ This repository contains the infrastructure code to containerize a Python applic
 - [Known issues](#known-issues)
 - [Design](#design)
   - [Challenges and trade offs](#challenges-and-trade-offs)
+- [Contributing](#contributing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -63,3 +64,7 @@ For a production ready deployment, AWS WAF and Network Firwall can be used to pr
   - Only the Helm chart for the Ingress controller would be installed via Terraform, this is to let the Terraform track all of the resources created on AWS and cleanly destroy everything when needed.
   - Rest of the Helm charts will be managed via ArgoCD or another pipeline.
 - Secrets are managed locally via `sops` and `age`. Instead of using AWS KMS, local options have been preferred to keep all of the deployment data in one place and ease the installation.
+
+## Contributing
+With the help of devbox and pre-commit, some git hooks will be installed when running `devbox shell` for the first time. They will be checked before every commit and if they fail, they should be fixed before a commit can happen.
+This project also uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to have a standardized commit message. Please have a look and make sure your commit message follows that.
