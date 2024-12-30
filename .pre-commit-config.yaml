@@ -82,3 +82,4 @@ repos:
   - id: commitizen
   - id: commitizen-branch
     stages: [pre-push]
+    args: [--rev-range, 1c90a893893f61c43d51353633023249e0200af0..HEAD]
