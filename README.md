@@ -22,11 +22,13 @@ Before running the Terraform scripts, ensure you have the following:
 
 ## Deployment steps
 1. **Install Devbox**: Ensure that [Devbox](https://jetify-com.vercel.app/docs/devbox/installing_devbox/#install-devbox) is installed. Devbox provides reproducible and isolated development environments, eliminating the need to install dependencies as system packages (except Docker).
-2. **Run `devbox shell`** command from the root directory of the repository. This will:
+2. **Run `devbox shell` and `devbox init`** commands from the root directory of the repository. This will:
     - Install required CLI dependencies locally, such as Terraform and Helm.
+    - Install pre-commit hooks needed for contributing to the project.
     - Automatically generate an Age key for encrypting the application's secrets. The Age private key is created on the root directory of the repository and it is ignored by Git. Ideally this file should be stored securely in user's computer or the CD server.
     - Prompt you to enter values for the application's secrets, which can be modified later.
     - Initialize the Terraform module.
+    - Run `terraform plan`
 3. **Customize Variables (Optional)**: Review the `terraform/variables.tf` file. Provide any custom values in the `terraform.tfvars` file to override the defaults. You can run `sops flask_app_secrets.enc.json` to edit the secrets.
 4. **Run `devbox install`** to deploy the Terraform code to your AWS environment. Since building the Docker image might require root access, the script first executes a simple command with sudo. This avoids the need to enter the sudo password during the actual deployment, ensuring a seamless Terraform execution.
 5. **Check results**: If everything is installed successfully, you should be to see output of the `/config` route in your terminal. You can also run `devbox output` to get the URL that you can access the app on your browser.
