@@ -40,7 +40,7 @@ spec:
             - name: API_BASE_URL
               value: {{ .Values.api_base_url }}
             - name: LOG_LEVEL
-              value: {{ .Values.log_level }}     
+              value: {{ .Values.log_level }}
             - name: MAX_CONNECTIONS
               value: "{{ .Values.max_connections }}"
             - name: SECRET_KEY

@@ -1,0 +1,89 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+- repo: https://github.com/crate-ci/typos
+  rev: v1.28.4
+  hooks:
+  - id: typos
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.2.4
+  hooks:
+  - id: codespell
+- repo: https://github.com/thlorenz/doctoc
+  rev: v2.2.0
+  hooks:
+  - id: doctoc
+    files: ^README.md$
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+    exclude: terraform/README.md
+  - id: mixed-line-ending
+  - id: check-yaml
+    exclude: charts/flask-app/templates
+  - id: check-added-large-files
+  - id: check-executables-have-shebangs
+  - id: check-shebang-scripts-are-executable
+  - id: check-merge-conflict
+  - id: no-commit-to-branch
+- repo: https://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.96.2
+  hooks:
+  - id: terraform_fmt
+  - id: terraform_validate
+  - id: terraform_tflint
+  - id: terraform_trivy
+    args:
+    - --args=--severity CRITICAL
+    - --args=--skip-dirs="**/.terraform"
+  - id: terraform_checkov
+    args:
+    - --args=--quiet
+    - --args=--skip-check CKV_AWS_23,CKV_AWS_355,CKV_AWS_290 --skip-framework helm # Temporarily skip these checks, Helm chart testing isn't needed for the repo
+- repo: https://github.com/rhysd/actionlint
+  rev: v1.7.5
+  hooks:
+  - id: actionlint-system
+- repo: local
+  hooks:
+  - id: terraform-docs
+    name: Generate docs for the Terraform
+    language: system
+    entry: terraform-docs markdown table terraform/
+    pass_filenames: false
+    files: 'terraform/'
+  - id: helm-docs
+    name: Generate docs for the Helm chart
+    language: system
+    entry: helm-docs -s file --template-files=README.md.gotmpl
+    files: 'charts/'
+  - id: helm-lint
+    name: Lint the Helm chart
+    language: system
+    entry: helm lint charts/flask-app
+    pass_filenames: false
+    files: 'charts/'
+  - id: ct-lint
+    name: Validate the Helm chart
+    language: system
+    entry: ct lint --debug false --config .github/ct-lint.yaml
+    pass_filenames: false
+    files: 'charts/'
+  - id: check-bash-syntax # https://github.com/Lucas-C/pre-commit-hooks?tab=readme-ov-file#bash-syntax-validation
+    name: Check Shell scripts syntax correctness
+    language: system
+    entry: bash -n
+    files: \.sh$
+- repo: https://github.com/commitizen-tools/commitizen
+  rev: v4.1.0
+  hooks:
+  - id: commitizen
+  - id: commitizen-branch
+    stages: [pre-push]
+    args: [--rev-range, 1c90a893893f61c43d51353633023249e0200af0..HEAD]
+- repo: https://github.com/gitleaks/gitleaks
+  rev: v8.22.0
+  hooks:
+  - id: gitleaks

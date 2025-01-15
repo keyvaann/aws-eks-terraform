@@ -1,5 +1,10 @@
+#checkov:skip=CKV_DOCKER_2:Health check is defined in the Helm chart.
+
 # Use an official Python runtime as a parent image
 FROM python:3.11-slim
+
+RUN useradd -m appuser
+USER appuser
 
 # Set the working directory to /app
 WORKDIR /app

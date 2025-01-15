@@ -1,7 +1,6 @@
 data "aws_caller_identity" "current" {}
 
 locals {
-  prefix              = "git"
   account_id          = data.aws_caller_identity.current.account_id
   ecr_repository_name = "app"
   ecr_image_tag       = "latest"
@@ -9,11 +8,15 @@ locals {
 
 resource "aws_ecr_repository" "repo" {
   name                 = local.ecr_repository_name
-  image_tag_mutability = "MUTABLE"
+  image_tag_mutability = "IMMUTABLE"
   force_delete         = true
 
   image_scanning_configuration {
-    scan_on_push = false
+    scan_on_push = true
+  }
+
+  encryption_configuration {
+    encryption_type = "KMS"
   }
 }
 
@@ -31,13 +34,4 @@ resource "terraform_data" "ecr_image" {
       aws ecr get-login-password --region ${var.AWS_REGION} | sudo docker login --username AWS --password-stdin ${local.account_id}.dkr.ecr.${var.AWS_REGION}.amazonaws.com && sudo docker build -t ${aws_ecr_repository.repo.repository_url}:${local.ecr_image_tag} . && sudo docker push ${aws_ecr_repository.repo.repository_url}:${local.ecr_image_tag}
     EOF
   }
-}
-
-data "aws_ecr_image" "app_image" {
-  depends_on = [
-    terraform_data.ecr_image
-  ]
-
-  repository_name = local.ecr_repository_name
-  image_tag       = local.ecr_image_tag
 }

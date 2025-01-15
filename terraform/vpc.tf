@@ -1,6 +1,5 @@
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=573f574c922782bc658f05523d0c902a4792b0a8" # commit hash of version 5.17.0
 
   name = "${var.eks_cluster_name}-vpc"
   cidr = var.vpc_cidr
@@ -33,6 +32,11 @@ module "vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
+  create_flow_log_cloudwatch_log_group            = true
+  enable_flow_log                                 = true
+  flow_log_cloudwatch_log_group_retention_in_days = 30
+  flow_log_traffic_type                           = "REJECT"
+
   default_security_group_tags = merge(tomap({ "Name" : "${var.eks_cluster_name}-vpc-default-sg" }), var.common_tags)
   tags                        = merge(tomap({ "Name" : "${var.eks_cluster_name}-vpc" }), var.common_tags)
 }
@@ -44,6 +48,7 @@ resource "aws_security_group" "vpc_endpoint" {
   tags = merge(tomap({ "Name" : "${var.eks_cluster_name}-vpc-endpoint-sg" }), var.common_tags)
 }
 
+#trivy:ignore:AVD-AWS-0104 Applications should be able to connect to internet.
 resource "aws_security_group_rule" "vpc_endpoint_egress" {
   security_group_id = aws_security_group.vpc_endpoint.id
   type              = "egress"
@@ -51,6 +56,8 @@ resource "aws_security_group_rule" "vpc_endpoint_egress" {
   from_port         = 0
   to_port           = 0
   cidr_blocks       = ["0.0.0.0/0"]
+
+  #checkov:skip=CKV_AWS_382:Applications should be able to connect to internet.
 }
 
 resource "aws_security_group_rule" "vpc_endpoint_self_ingress" {

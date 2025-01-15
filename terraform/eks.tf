@@ -1,6 +1,5 @@
 module "vpc_cni_irsa" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "~> 5.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-role-for-service-accounts-eks?ref=e20e0b9a42084bbc885fd5abb18b8744810bd567" # commit hash of version 5.48.0
 
   role_name             = "${var.eks_cluster_name}-vpc-cni-irsa"
   attach_vpc_cni_policy = true
@@ -17,8 +16,7 @@ module "vpc_cni_irsa" {
 }
 
 module "ebs_csi_irsa" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "~> 5.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-role-for-service-accounts-eks?ref=e20e0b9a42084bbc885fd5abb18b8744810bd567" # commit hash of version 5.48.0
 
   role_name             = "${var.eks_cluster_name}-ebs-csi-irsa"
   attach_ebs_csi_policy = true
@@ -34,9 +32,9 @@ module "ebs_csi_irsa" {
   tags = merge(tomap({ "Name" : "${var.eks_cluster_name}-ebs-csi-irsa" }), var.common_tags)
 }
 
+#trivy:ignore:AVD-AWS-0040 #trivy:ignore:AVD-AWS-0041 #trivy:ignore:AVD-AWS-0104 For ease of use EKS cluster should be open to Internet in this example and applications should be able to connect to internet.
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "19.13.1"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=2cb1fac31b0fc2dd6a236b0c0678df75819c5a3b" # commit hash of version 19.21.0
 
   cluster_name    = var.eks_cluster_name
   cluster_version = local.eks_core_versions[var.eks_kubernetes_version].cluster_version
@@ -95,7 +93,7 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    "${var.eks_cluster_name}" = {
+    (var.eks_cluster_name) = {
       desired_size = var.worker_node_size["desired"]
       min_size     = var.worker_node_size["min"]
       max_size     = var.worker_node_size["max"]

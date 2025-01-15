@@ -43,12 +43,6 @@ variable "eks_cluster_name" {
   }
 }
 
-variable "environment" {
-  type        = string
-  description = "Environment name"
-  default     = "dev"
-}
-
 variable "common_tags" {
   type        = map(string)
   description = "Common tags associated to resources created"
@@ -128,13 +122,13 @@ variable "vpc_public_subnet_cidr" {
   ]
 }
 
-variable "defaut_storage_class" {
+variable "default_storage_class" {
   type        = string
   description = "Default storage class used for describing the EBS usage"
   default     = "ebs-sc-gp2"
 
   validation {
-    condition     = var.defaut_storage_class == "ebs-sc-gp2" || var.defaut_storage_class == "ebs-sc-gp3" || var.defaut_storage_class == "ebs-sc-io1" || var.defaut_storage_class == "ebs-sc-io2"
+    condition     = var.default_storage_class == "ebs-sc-gp2" || var.default_storage_class == "ebs-sc-gp3" || var.default_storage_class == "ebs-sc-io1" || var.default_storage_class == "ebs-sc-io2"
     error_message = "Invalid storage class. Allowed values are 'ebs-sc-gp2', 'ebs-sc-gp3', 'ebs-sc-io1' or 'ebs-sc-io2'."
   }
 }
